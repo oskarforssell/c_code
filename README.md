@@ -1,23 +1,44 @@
 # c_code
 
-    1477  wget https://packages.microsoft.com/config/ubuntu/20.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-    1478  sudo dpkg -i packages-microsoft-prod.deb               
-    1479  sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-5.0               
-    1480  sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y aspnetcore-runtime-5.0               
-    1481  sudo apt autoremove               
-    1482  lsb_release -a               
-    1483  wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb               
-    1484  sudo dpkg -i packages-microsoft-prod.deb               
-    1485  sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-5.0               
-    1486  sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y aspnetcore-runtime-5.0               
-    1487  dotnet               
-    1488  dotnet --info               
-    1489  cd repos/               
-    1490  ls              
-    1491  code .               
-    1492  nuget               
-    1493  sudo apt install nuget              
-    1494  nuget               
+Create a new project
+
+    dotnet new console -o NewProjectName
+    
+Install dotnet
+
+    wget https://packages.microsoft.com/config/ubuntu/20.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+    sudo dpkg -i packages-microsoft-prod.deb               
+    sudo apt-get update
+    sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-5.0               
+    sudo apt-get update;   
+    sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y aspnetcore-runtime-5.0               
+    sudo apt autoremove               
+    lsb_release -a               
+    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb               
+    sudo dpkg -i packages-microsoft-prod.deb               
+    sudo apt-get update;   
+    sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-5.0               
+    1486  sudo apt-get update;   
+    sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y aspnetcore-runtime-5.0               
+    dotnet           # check that dotnet works
+    dotnet --info  
+    
+Move to your repos folder
+
+    cd repos/               
+    ls              
+    code .               # open vscode
+    
+    nuget               # check if nuget is installed
+                        # if not then install it: 
+    sudo apt install nuget              
+    nuget               # check again that it is installed
+    
+    
+    
+    
+    
+    
     1495  dotnet -h               
     1496  donet nuget              
     1497  dotnet nuget               
