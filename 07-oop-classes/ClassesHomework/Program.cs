@@ -6,7 +6,7 @@ namespace ClassesHomework
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the 'chair experience'!");
+            Console.WriteLine("THE CHAIR");
 
             Chair officeChair = new Chair();
             Console.WriteLine($"Our {officeChair.Color} office chair has {officeChair.Legs} legs");
@@ -18,8 +18,16 @@ namespace ClassesHomework
             Console.WriteLine($"Is someone sitting on it now: {officeChair.IsSitting}");
             Console.WriteLine($"But it can only handle: {officeChair.MaxWeight}");
 
+            Console.WriteLine("-----\nTHE SUPERHERO");
 
-    
+            Superhero boy = new Superhero();
+            Console.WriteLine($"My superhero name: {boy.HeroName}, superpower: {boy.HeroAbility}");
+            Console.WriteLine($"I'm: {boy.GetAge} sun rotations old and human: {boy.HumanOrNot}");
+            boy.HeroName = "SpongeBob";
+            boy.HeroAbility = "Super fast floor mopper!";
+            Console.WriteLine($"My superhero name: {boy.HeroName}, superpower: {boy.HeroAbility}");
+            Console.WriteLine($"I'm: {boy.GetAge} sun rotations old and human: {boy.HumanOrNot}");
+
         }
     }
 }
