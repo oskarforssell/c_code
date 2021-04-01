@@ -6,17 +6,25 @@ namespace DeckOfCards
     class Deck
     {
         public List<Card> cards = new List<Card>();
+       
+        int[] rankNumbers = new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        int[] suitNumbers = new int[] {1,2,3,4};
 
-        // public string[] suitArray = new string[] {"spade", "diamond", "heart", "club"};
-        // public int[] rankArray = new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13};
-        
-
-
+        public Deck()
+        {
+            for (int i=0; i<4; i++) {
+                for (int a=0; a<13; a++) {
+                    Card kort = new Card(a,i);
+                    cards.Add(kort);
+                    //kort.Print();
+                }
+            }
+            int deck_size = cards.Count;
+        }
         public void Print() {
-            Card something = new Card(3,3);
-            something.Print();
+            int deck_size = cards.Count;
+            Console.WriteLine(deck_size);
 
-            // Console.WriteLine(something.Print());
         }
         
 
