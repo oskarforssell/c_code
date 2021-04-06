@@ -6,10 +6,9 @@ namespace Elevator
     {
         static void Main(string[] args)
         {
-            Lift hissi = new Lift();
-            hissi.TargetFloor(3);
+            Elevator lift = new Elevator();
 
-            hissi.PrintPosition();
+            lift.PrintPosition();
         }
     }
 }

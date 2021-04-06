@@ -4,30 +4,57 @@ namespace Elevator
 {
     class Lift
     {
-        //public int stories = 5;
-        //public List<int> kerrokset = new List<int>();
-        public int[] floors = new int[5] {1,2,3,4,5};
-
+        public int FloorCount { get; private set; }
         public int CurrentFloor { get; private set; }
-        public bool Moving { get; private set; }
-        public void TargetFloor(int target)
+        public bool IsMoving { get; private set; }
+
+        private int _target;
+        private int _firstfloor;
+
+        public Elevator(int floors) {
+            FloorCount = floors;
+            _firstfloor = 1;
+            CurrentFloor = _firstfloor;
+        }
+
+        public void Start(int target)
         {
-            Moving = true;
-            CurrentFloor = target;
+            _target = target;
+            IsMoving = true;
+
+            int floor_dec = 1;
+            if (target < CurrentFloor)
+            {
+                floor_dec = -1;
+            }
+            while (CurrentFloor != target)
+            {
+                PrintPosition();
+                CurrentFloor = CurrentFloor + floor_dec;
+            }
+            Console.WriteLine($"Target floor ({CurrentFloor}) reached!");
+            IsMoving = false;
         }
 
         public void PrintPosition()
         {
-            tagIndex = CurrentFloor - 1;
-
-
-
-            for (int i=0; i<5; i++)
+            for (int i = _firstfloor; i <= FloorCount; i++)
             {
-                Console.Write((floors[i])+" ");
+                if (i == CurrentFloor)
+                {
+                    Console.Write("[");
+                }
+                Console.Write(i);
+
+                if (i== CurrentFloor)
+                {
+                    Console.Write("]");
+                }
+                Console.Write(" ");
             }
-            Console.WriteLine();
         }
+
+
 
     }
 }
