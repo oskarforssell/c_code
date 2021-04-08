@@ -6,9 +6,12 @@ namespace Elevator
     {
         static void Main(string[] args)
         {
-            Elevator lift = new Elevator();
+            Lift elevator = new Lift(5);
+            Console.WriteLine(elevator.CurrentFloor);
 
-            lift.PrintPosition();
+            elevator.Start(5);
+            elevator.Start(3);
+
         }
     }
 }
