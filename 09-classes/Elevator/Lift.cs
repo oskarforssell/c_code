@@ -11,7 +11,7 @@ namespace Elevator
         private int _target;
         private int _firstfloor;
 
-        public Elevator(int floors) {
+        public Lift(int floors) {
             FloorCount = floors;
             _firstfloor = 1;
             CurrentFloor = _firstfloor;
@@ -52,9 +52,7 @@ namespace Elevator
                 }
                 Console.Write(" ");
             }
+            Console.WriteLine("");
         }
-
-
-
     }
 }
