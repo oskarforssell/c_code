@@ -11,7 +11,7 @@ namespace Buildings
             this.Roof = true;
             this.Walls = 4;
             this.Windows = 80;
-            this.Floors = 10;
+            this.Floors = 30;
             this.Doors = 1;
         }
 
