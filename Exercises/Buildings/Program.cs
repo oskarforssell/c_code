@@ -6,9 +6,9 @@ namespace Buildings
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World!");
             Building.HowManyHouses();
-            Building condo = new Building();
+            Building house = new Building(1,4,1);
+
             Building.HowManyHouses();
             Building condo1 = new Building();
             Building.HowManyHouses();
@@ -17,8 +17,7 @@ namespace Buildings
             Building condo3 = new Building();
             Building.HowManyHouses();
             Building condollo = new Building();
-            Building.HowManyHouses();
-            Building house = new Building(1,4,1);
+            Building condo = new Building();
 
             Skyscraper tower = new Skyscraper();
             Skyscraper tower1 = new Skyscraper();
@@ -26,6 +25,7 @@ namespace Buildings
             Console.WriteLine(tower.Doors);
             Console.WriteLine(tower1.Windows);
 
+            Building.HowManyHouses();
 
             // Console.WriteLine($"Walls: {house.Walls}");
             // Console.WriteLine($"Roof: {house.Roof}");
