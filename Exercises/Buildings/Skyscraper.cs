@@ -20,6 +20,7 @@ namespace Buildings
 
 
 
+
         // All buildings have walls, a roof, 
         // Variable ammount in: 
         // windows
