@@ -6,10 +6,12 @@ namespace Buildings
     {
         static void Main(string[] args)
         {
-            Building.HowManyHouses();
-            Building house = new Building(1,4,1);
+            
+            Building house = new Building(1,4,2);
 
             Building.HowManyHouses();
+
+            
             Building condo1 = new Building();
             Building.HowManyHouses();
             Building condo2 = new Building();
