@@ -6,6 +6,10 @@ namespace PeopleApp
     {
         public string Name { get; protected set; }
         public int Age { get; protected set; }
+        public string Type { get; protected set; }
+
+
+
 
         public People() { }
 
@@ -31,6 +35,10 @@ namespace PeopleApp
             string exit = "a";
             while (exit != "q")
             {
+                Child[] kidArray = new Child[0];
+                Adult[] adultArray = new Adult[0];
+                int adultEntries = 0;
+                int kidEntries = 0;
                 Commands();
                 string userInput = Console.ReadLine();
                 if (userInput == "exit" || userInput == "quit")
@@ -49,9 +57,29 @@ namespace PeopleApp
                     {
                         Console.Write("Favourite bike? ");
                         string userBike = Console.ReadLine();
-                        Child person = new Child(userName,userAge,userBike);
+                        Child underAged = new Child(userName, userAge, userBike);
+                        kidEntries++;
+                        Array.Resize(ref kidArray, kidEntries);
+                        kidArray[kidEntries - 1] = underAged; 
+                    }
+                    else if (userAge > 17)
+                    {
+                        Console.Write("Favourite car? ");
+                        string userCar = Console.ReadLine();
+                        Adult legalAged = new Adult(userName, userAge, userCar);
+                        adultEntries++;
+                        Array.Resize(ref adultArray, adultEntries);
+                        adultArray[adultEntries - 1] = legalAged; 
                     }
                 }
+                // if (userInput == "lc")
+                // {
+                //     for (int i=0; i<kidEntries; i++)
+                //     {
+                //         Child kiddo = kidArray[i];
+                //         Console.WriteLine(kiddo);
+                //     }
+                // }
             }
         }
     }
