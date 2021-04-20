@@ -27,6 +27,9 @@ namespace InterfaceInventory
             // use the itams in the inventory
             inventory[0].Use();
             inventory[1].Use();
+
+            Console.WriteLine(h1.HPGain);
+            Console.WriteLine(inventory[1].Name);
         }
     }
 }
