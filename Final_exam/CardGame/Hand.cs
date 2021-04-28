@@ -54,37 +54,65 @@ namespace CardGame
                     pack.RemoveFromAIHand(selection);
 
                     /// ADD HERE comparison: if SUIT is same, then bigger rank wins, else player wins
-                    if (playerSuit == aiSuit)
-                    {
-                        if (playerRank > aiRank)
-                        {
-                            Console.WriteLine("Player Wins!");
-                            playerScore++;
-                        }
-                        else
-                        {
-                            Console.WriteLine("AI scored one point!");
-                            aiScore++;
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("AI picked a card with a different suit! One point for the player!");
-                        playerScore++;
-                    }
+                    Winner(playerSuit, aiSuit, playerRank, aiRank);
+                    // if (playerSuit == aiSuit)
+                    // {
+                    //     if (playerRank > aiRank)
+                    //     {
+                    //         Console.WriteLine("Player Wins!");
+                    //         playerScore++;
+                    //     }
+                    //     else
+                    //     {
+                    //         Console.WriteLine("AI scored one point!");
+                    //         aiScore++;
+                    //     }
+                    // }
+                    // else
+                    // {
+                    //     Console.WriteLine("AI picked a card with a different suit! One point for the player!");
+                    //     playerScore++;
+                    // }
 
-                    if (pack.PlayerHandSize() == 0)
-                    {
-                        Console.WriteLine($"Player Score: {playerScore.ToString()}");
-                        Console.WriteLine($"AI Score: {aiScore.ToString()}");
-                        return 0;
-
-                    }
-                    return 1;
+                    // if (pack.PlayerHandSize() == 0)
+                    // {
+                    //     Console.WriteLine($"Player Score: {playerScore.ToString()}");
+                    //     Console.WriteLine($"AI Score: {aiScore.ToString()}");
+                    //     return 0;
+                    // }
+                    // return 1;
                 }
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
-
             }
+        }
+        public void Winner(int playerSuit, int aiSuit, int playerRank, int aiRank)
+        {
+            if (playerSuit == aiSuit)
+            {
+                if (playerRank > aiRank)
+                {
+                    Console.WriteLine("Player Wins!");
+                    playerScore++;
+                }
+                else
+                {
+                    Console.WriteLine("AI scored one point!");
+                    aiScore++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("AI picked a card with a different suit! One point for the player!");
+                playerScore++;
+            }
+
+            if (pack.PlayerHandSize() == 0)
+            {
+                Console.WriteLine($"Player Score: {playerScore.ToString()}");
+                Console.WriteLine($"AI Score: {aiScore.ToString()}");
+                // return 0;
+            }
+            // return 1;
         }
     }
 }
