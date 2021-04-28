@@ -10,8 +10,8 @@ namespace CardGame
         public List<Card> AIHand = new List<Card>();   // ADDED FOR CARD GAME
 
 
-        int[] rankNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-        int[] suitNumbers = new int[] { 1, 2, 3, 4 };
+        // int[] rankNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+        // int[] suitNumbers = new int[] { 1, 2, 3, 4 };
 
         public Deck()
         {
@@ -21,7 +21,6 @@ namespace CardGame
                 {
                     Card kort = new Card(a, i);
                     cards.Add(kort);
-                    //kort.Print();
                 }
             }
             int deck_size = cards.Count;
@@ -40,22 +39,22 @@ namespace CardGame
             }
         }
 
-        public void DrawRandomCards(int numberOfCardsToDraw)
-        {
-            if (numberOfCardsToDraw <= cards.Count)
-            {
-                for (int i = 0; i < numberOfCardsToDraw; i++)
-                {
-                    int deck_indexes = (cards.Count - 1);
-                    Random r = new Random();
-                    int randIndex = r.Next(0, deck_indexes);
-                    Card chosen_card = cards[randIndex];
-                    chosen_card.Print();
-                    cards.RemoveAt(randIndex);
-                }
-            }
-            else { Console.WriteLine($"Can't take {numberOfCardsToDraw} cards, only {cards.Count} cards left.."); }
-        }
+        // public void DrawRandomCards(int numberOfCardsToDraw)
+        // {
+        //     if (numberOfCardsToDraw <= cards.Count)
+        //     {
+        //         for (int i = 0; i < numberOfCardsToDraw; i++)
+        //         {
+        //             int deck_indexes = (cards.Count - 1);
+        //             Random r = new Random();
+        //             int randIndex = r.Next(0, deck_indexes);
+        //             Card chosen_card = cards[randIndex];
+        //             chosen_card.Print();
+        //             cards.RemoveAt(randIndex);
+        //         }
+        //     }
+        //     else { Console.WriteLine($"Can't take {numberOfCardsToDraw} cards, only {cards.Count} cards left.."); }
+        // }
 
         public void DrawFromTopOfDeck(int cardsToBeDrawn)
         {
@@ -108,10 +107,42 @@ namespace CardGame
             int deck_size = playerHand.Count;
             Console.WriteLine($"The player has {deck_size} cards");
         }
+        public int PlayerHandSize()
+        {
+            return playerHand.Count;
+        }
         public void PrintAIHandSize()
         {
-            int deck_size = playerHand.Count;
+            int deck_size = AIHand.Count;
             Console.WriteLine($"The AI has {deck_size} cards");
+        }
+
+        public void PrintPlayerHand()
+        {
+            Console.WriteLine("Your cards: ");
+            for (int i = 0; i < playerHand.Count; i++)
+            {
+                Card one = playerHand[i];
+                Console.Write($"{i.ToString()}: ");
+                one.Print();
+            }
+
+        }
+        public void PrintAIHand()       /// FOR DEBUGGING!
+        {
+            Console.WriteLine("AI cards: ");
+            for (int i = 0; i < AIHand.Count; i++)
+            {
+                Card one = AIHand[i];
+                Console.Write($"{i.ToString()}: ");
+                one.Print();
+            }
+
+        }
+
+        public void RemoveFromPlayerHand(int index)
+        {
+            playerHand.RemoveAt(index);
         }
     }
 }
