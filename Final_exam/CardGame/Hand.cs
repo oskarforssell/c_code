@@ -33,7 +33,7 @@ namespace CardGame
                 if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
                 {
                     Card oneCard = pack.playerHand[ans];
-                    Console.Write("You played the: ");
+                    Console.Write("The player chose ");
                     oneCard.Print();
                     string playedCard = oneCard.ReturnCard();
                     int playerSuit = oneCard.CardSuit();
@@ -47,7 +47,7 @@ namespace CardGame
                     int selection;
                     selection = random.Next(0, (pack.AIHandSize() - 1));
                     Card aiCard = pack.AIHand[selection];
-                    Console.Write("AI played the: ");
+                    Console.Write("The AI chose ");
                     aiCard.Print();
                     int aiSuit = aiCard.CardSuit();
                     int aiRank = aiCard.CardRank();
@@ -63,13 +63,13 @@ namespace CardGame
                         }
                         else
                         {
-                            Console.WriteLine("AI Wins!");
+                            Console.WriteLine("AI scored one point!");
                             aiScore++;
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Player Wins!");
+                        Console.WriteLine("AI picked a card with a different suit! One point for the player!");
                         playerScore++;
                     }
 
@@ -80,8 +80,6 @@ namespace CardGame
                         return 0;
 
                     }
-                    Console.WriteLine($"Player Score: {playerScore.ToString()}");
-                    Console.WriteLine($"AI Score: {aiScore.ToString()}");
                     return 1;
                 }
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
