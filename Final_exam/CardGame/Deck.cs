@@ -128,14 +128,14 @@ namespace CardGame
             }
 
         }
-        public void PrintAIHand()       /// FOR DEBUGGING!
+        public void PrintAIHand()                       /// FOR DEBUGGING!
         {
-            Console.WriteLine("AI cards: ");
-            for (int i = 0; i < AIHand.Count; i++)
+            Console.WriteLine("AI cards: ");            //
+            for (int i = 0; i < AIHand.Count; i++)      //
             {
-                Card one = AIHand[i];
-                Console.Write($"{i.ToString()}: ");
-                one.Print();
+                Card one = AIHand[i];                   //
+                Console.Write($"{i.ToString()}: ");     //
+                one.Print();                            //
             }
 
         }
