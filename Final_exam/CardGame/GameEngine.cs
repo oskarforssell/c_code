@@ -28,6 +28,7 @@ namespace CardGame
                 }
                 else if (digit < 27)
                 {
+                    Console.WriteLine($"The size of the hands: {ans}");
                     GameEngine newGame = new GameEngine(digit);
                     break;
                 }
