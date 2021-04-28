@@ -5,6 +5,7 @@ namespace CardGame
 {
     public class GameEngine
     {
+
         public void Start()
         {
             while (true)
@@ -38,7 +39,13 @@ namespace CardGame
         {
             Hand hand = new Hand();
             hand.GetPlayerHand(cardsPerPlayer);
-            hand.PlayCard();
+
+            int playOn = 1;
+            while (playOn != 0)
+            {
+                playOn = hand.PlayCard();
+            }
+
         }
 
         // based on how many cards the player wants, take that many random cards and give it to player and AI. (so between 1-26 cards)
