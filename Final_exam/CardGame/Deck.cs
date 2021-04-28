@@ -111,6 +111,10 @@ namespace CardGame
         {
             return playerHand.Count;
         }
+        public int AIHandSize()
+        {
+            return AIHand.Count;
+        }
         public void PrintAIHandSize()
         {
             int deck_size = AIHand.Count;
@@ -143,6 +147,10 @@ namespace CardGame
         public void RemoveFromPlayerHand(int index)
         {
             playerHand.RemoveAt(index);
+        }
+        public void RemoveFromAIHand(int index)
+        {
+            AIHand.RemoveAt(index);
         }
     }
 }
