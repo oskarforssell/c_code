@@ -16,20 +16,24 @@ namespace CardGame
 
         public string PlayCard()
         {
-            Console.WriteLine("---Player hand---");  // DEBUGGING
-            pack.PrintPlayerHand();                 // DEBUGGING
-            Console.WriteLine("---------");          // DEBUGGING
-
             string cardRange = (pack.PlayerHandSize() - 1).ToString();
             Console.WriteLine($"Which card do you want to play? (0-{cardRange})");
-            int ans = Int32.Parse(Console.ReadLine());
-            pack.RemoveFromPlayerHand(ans);
+            
+            while (true)
+            {
+                int ans = Int32.Parse(Console.ReadLine());
 
-
-
-            Console.WriteLine("---Player hand---");  // DEBUGGING
-            pack.PrintPlayerHand();                 // DEBUGGING
-            Console.WriteLine("---------");          // DEBUGGING
+                if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
+                {
+                    Card single = pack.playerHand[ans];
+                    Console.Write("You played the: ");
+                    single.Print();
+                    pack.RemoveFromPlayerHand(ans);
+                    break;
+                }
+                else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
+            }
+            pack.PrintPlayerHand();
 
             return "This_is_the_return_statement";
         }
