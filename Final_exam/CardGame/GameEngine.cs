@@ -5,38 +5,36 @@ namespace CardGame
 {
     public class GameEngine
     {
-        
-        // List<Deck> playerHand = new List<Deck>();
+        public void Start()
+        {
+            while (true)
+            {
+                Console.Write("How many cards do you want (1-26)? ");
+                string ans = Console.ReadLine();
+                int digit = Int16.Parse(ans);
+                if (digit == 0) { break; }
+                else if (digit > 26)
+                {
+                    Console.WriteLine("Too manny cards! You can have 26 at most!");
+                }
+                else if (digit < 27)
+                {
+                    GameEngine newGame = new GameEngine(digit);
+                    break;
+                }
+            }
+        }
+        public GameEngine() { }
 
         public GameEngine(int cardsPerPlayer)
         {
-            Deck gameDeck = new Deck();
-            gameDeck.PrintDeckSize();  // remove this
-            Console.Write("Player chose: ");
-            Console.WriteLine(cardsPerPlayer);
-            Console.WriteLine("----");
-
-            gameDeck.ShuffleTheDeck();
-
-            gameDeck.DrawFromTopOfDeck(cardsPerPlayer);
-            // playerHand.Add(gameDeck.DrawFromTopOfDeck(cardsPerPlayer));
-
-            gameDeck.PrintDeckSize();  // remove this
-            Console.WriteLine("---cards removed and stored in list? ---");
-
-            // Console.WriteLine(playerHand);
-            gameDeck.DealCards(cardsPerPlayer);
-            gameDeck.PrintAIHandSize();
-            gameDeck.PrintPlayerHandSize();
-
-            gameDeck.PrintDeckSize();
-
+            Hand tata = new Hand();
+            tata.GetPlayerHand(cardsPerPlayer);
+            tata.PlayCard();
         }
-
+       
         // Create a new deck in here
         // shuffle the deck
         // based on how many cards the player wants, take that many random cards and give it to player and AI. (so between 1-26 cards)
-
-
     }
 }
