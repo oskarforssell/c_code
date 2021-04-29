@@ -8,10 +8,11 @@ namespace CardGame
         Deck pack = new Deck();
         public int playerScore = 0;
         public int aiScore = 0;
-        public void GetPlayerHand(int cardNum)
+        public void Deal(int cardNum)
         {
             pack.ShuffleTheDeck();
             pack.DealCards(cardNum);
+            pack.PrintDeckSize();
             pack.PrintPlayerHand();
             pack.PrintAIHand();
         }
@@ -23,12 +24,16 @@ namespace CardGame
             {
                 Console.WriteLine($"Which card do you want to play? (0-{cardRange})");
             }
-            else { Console.WriteLine($"Last card to play? Press 0"); }
-
+            else if (pack.PlayerHandSize() == 1)
+            {
+                Console.WriteLine($"Last card to play! Press 0");
+            }
 
             while (true)
             {
                 int ans = Int32.Parse(Console.ReadLine());
+
+                /// add input "h" shows hand
 
                 if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
                 {
@@ -42,7 +47,6 @@ namespace CardGame
                     pack.RemoveFromPlayerHand(ans);
 
                     // AI selection below;
-
                     Random random = new Random();
                     int selection;
                     selection = random.Next(0, (pack.AIHandSize() - 1));
@@ -55,32 +59,11 @@ namespace CardGame
 
                     /// ADD HERE comparison: if SUIT is same, then bigger rank wins, else player wins
                     Winner(playerSuit, aiSuit, playerRank, aiRank);
-                    // if (playerSuit == aiSuit)
-                    // {
-                    //     if (playerRank > aiRank)
-                    //     {
-                    //         Console.WriteLine("Player Wins!");
-                    //         playerScore++;
-                    //     }
-                    //     else
-                    //     {
-                    //         Console.WriteLine("AI scored one point!");
-                    //         aiScore++;
-                    //     }
-                    // }
-                    // else
-                    // {
-                    //     Console.WriteLine("AI picked a card with a different suit! One point for the player!");
-                    //     playerScore++;
-                    // }
-
-                    // if (pack.PlayerHandSize() == 0)
-                    // {
-                    //     Console.WriteLine($"Player Score: {playerScore.ToString()}");
-                    //     Console.WriteLine($"AI Score: {aiScore.ToString()}");
-                    //     return 0;
-                    // }
-                    // return 1;
+                    if (pack.PlayerHandSize() == 0)
+                    {
+                        return 0;
+                    }
+                    return 1;
                 }
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
             }
@@ -91,28 +74,28 @@ namespace CardGame
             {
                 if (playerRank > aiRank)
                 {
-                    Console.WriteLine("Player Wins!");
+                    Console.WriteLine("Player scored one point!\n");
                     playerScore++;
                 }
                 else
                 {
-                    Console.WriteLine("AI scored one point!");
+                    Console.WriteLine("AI scored one point!\n");
                     aiScore++;
                 }
             }
             else
             {
-                Console.WriteLine("AI picked a card with a different suit! One point for the player!");
+                Console.WriteLine("AI picked a card with a different suit! One point for the player!\n");
                 playerScore++;
             }
 
-            if (pack.PlayerHandSize() == 0)
-            {
-                Console.WriteLine($"Player Score: {playerScore.ToString()}");
-                Console.WriteLine($"AI Score: {aiScore.ToString()}");
-                // return 0;
-            }
-            // return 1;
+            // if (pack.PlayerHandSize() == 0)
+            // {
+            Console.WriteLine("-SCOREBOARD-");
+            Console.WriteLine($" Player: {playerScore.ToString()}\n AI:\t {aiScore.ToString()}");
+            Console.WriteLine("------------");
+            // Console.WriteLine($"AI Score: {aiScore.ToString()}");
+            // }
         }
     }
 }
