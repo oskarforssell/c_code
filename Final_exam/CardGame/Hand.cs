@@ -57,8 +57,9 @@ namespace CardGame
                     int aiRank = aiCard.CardRank();
                     pack.RemoveFromAIHand(selection);
 
-                    /// ADD HERE comparison: if SUIT is same, then bigger rank wins, else player wins
+                    // Check who won
                     Winner(playerSuit, aiSuit, playerRank, aiRank);
+
                     if (pack.PlayerHandSize() == 0)
                     {
                         return 0;
@@ -68,6 +69,9 @@ namespace CardGame
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
             }
         }
+
+
+
         public void Winner(int playerSuit, int aiSuit, int playerRank, int aiRank)
         {
             if (playerSuit == aiSuit)
@@ -88,14 +92,9 @@ namespace CardGame
                 Console.WriteLine("AI picked a card with a different suit! One point for the player!\n");
                 playerScore++;
             }
-
-            // if (pack.PlayerHandSize() == 0)
-            // {
             Console.WriteLine("-SCOREBOARD-");
             Console.WriteLine($" Player: {playerScore.ToString()}\n AI:\t {aiScore.ToString()}");
             Console.WriteLine("------------");
-            // Console.WriteLine($"AI Score: {aiScore.ToString()}");
-            // }
         }
     }
 }
