@@ -70,6 +70,19 @@ namespace CardGame
             }
         }
 
+        ///// SOMETHING LIKE THIS TO SPLIT UP PLAYER AND AI GAMEPLAY.. THEN ADD IF STATEMENTS TO CHOOSE WHICH ONE PLAYES FIRST!
+
+        // public void Player(int index)
+        // {
+        //     Card oneCard = pack.playerHand[index];
+        //     Console.Write("The player chose ");
+        //     oneCard.Print();
+        //     string playedCard = oneCard.ReturnCard();
+        //     int playerSuit = oneCard.CardSuit();
+        //     int playerRank = oneCard.CardRank();
+
+        //     pack.RemoveFromPlayerHand(index);
+        // }
 
 
         public void Winner(int playerSuit, int aiSuit, int playerRank, int aiRank)
