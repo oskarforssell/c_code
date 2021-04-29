@@ -9,10 +9,6 @@ namespace CardGame
         public List<Card> playerHand = new List<Card>();   // ADDED FOR CARD GAME
         public List<Card> AIHand = new List<Card>();   // ADDED FOR CARD GAME
 
-
-        // int[] rankNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-        // int[] suitNumbers = new int[] { 1, 2, 3, 4 };
-
         public Deck()
         {
             for (int i = 0; i < 4; i++)
@@ -28,7 +24,7 @@ namespace CardGame
         public void PrintDeckSize()
         {
             int deck_size = cards.Count;
-            Console.WriteLine($"The deck has {deck_size} cards");
+            Console.WriteLine($"{deck_size} cards left in the deck.");
         }
         public void PrintDeckCards()
         {
@@ -37,37 +33,6 @@ namespace CardGame
                 Card print_card = cards[i];
                 print_card.Print();
             }
-        }
-
-        // public void DrawRandomCards(int numberOfCardsToDraw)
-        // {
-        //     if (numberOfCardsToDraw <= cards.Count)
-        //     {
-        //         for (int i = 0; i < numberOfCardsToDraw; i++)
-        //         {
-        //             int deck_indexes = (cards.Count - 1);
-        //             Random r = new Random();
-        //             int randIndex = r.Next(0, deck_indexes);
-        //             Card chosen_card = cards[randIndex];
-        //             chosen_card.Print();
-        //             cards.RemoveAt(randIndex);
-        //         }
-        //     }
-        //     else { Console.WriteLine($"Can't take {numberOfCardsToDraw} cards, only {cards.Count} cards left.."); }
-        // }
-
-        public void DrawFromTopOfDeck(int cardsToBeDrawn)
-        {
-            if (cardsToBeDrawn <= cards.Count)
-            {
-                for (int i = 0; i < cardsToBeDrawn; i++)
-                {
-                    Card chosen_card = cards[0];
-                    chosen_card.Print();
-                    cards.RemoveAt(0);
-                }
-            }
-            else { Console.WriteLine($"Can't take {cardsToBeDrawn} cards, only {cards.Count} cards left.."); }
         }
 
         public void ShuffleTheDeck()
