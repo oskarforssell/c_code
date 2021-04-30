@@ -230,10 +230,5 @@ namespace CardGame
             Console.WriteLine($" Player: {hand.playerScore.ToString()}\n AI:\t {hand.aiScore.ToString()}");
             Console.WriteLine("------------------------------------\n");
         }
-
-        public AiIntelligence()
-        {
-            Console.WriteLine("Say what?");
-        }
     }
 }
