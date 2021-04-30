@@ -5,7 +5,6 @@ namespace CardGame
 {
     public class GameEngine
     {
-
         public void Start()
         {
             while (true)
@@ -29,8 +28,9 @@ namespace CardGame
                 else if (digit < 27)
                 {
                     Hand hand = new Hand();
-                    Console.WriteLine($"The size of the hands: {ans}\n");
+                    Console.WriteLine($"The size of the hands: {ans}");
                     hand.Deal(digit);
+                    Console.WriteLine("");
 
                     int playOn = 1;
                     while (playOn != 0)
