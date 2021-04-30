@@ -29,36 +29,6 @@ namespace CardGame
                 int[] output = AiFirst(playingOrder);
                 return output;
             }
-
-
-            // while (true)
-            // {
-            //     int ans = Int32.Parse(Console.ReadLine());
-            //     if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
-            //     {
-            //         if (playingOrder == 0)  // Player plays first
-            //         {
-            //             int[] playerCard = Player(ans);
-            //             int[] aiCard = AI();
-            //             continueGameAndRoundWinner[1] = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1]);
-            //         }
-            //         else  // AI plays first
-            //         {
-            //             int[] aiCard = AI();
-            //             int[] playerCard = Player(ans);
-            //             continueGameAndRoundWinner[1] = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1]);
-            //         }
-
-            //         if (pack.PlayerHandSize() == 0)
-            //         {
-            //             continueGameAndRoundWinner[0] = 0;
-            //             return continueGameAndRoundWinner;
-            //         }
-            //         continueGameAndRoundWinner[0] = 1;
-            //         return continueGameAndRoundWinner;
-            //     }
-            //     else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
-            // }
         }
 
         public int[] PlayerFirst(int playingOrder)
