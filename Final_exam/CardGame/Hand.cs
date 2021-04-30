@@ -97,37 +97,29 @@ namespace CardGame
 
         public int[] Player(int ans)
         {
-            int[] suitRank = new int[2];
             Card oneCard = pack.playerHand[ans];
             Console.Write("The player chose ");
             oneCard.Print();
             string playedCard = oneCard.ReturnCard();
-            suitRank[0] = oneCard.CardSuit();
-            suitRank[1] = oneCard.CardRank();
+            int[] suitRank = new int[2] { oneCard.CardSuit(), oneCard.CardRank() };
+            // suitRank[0] = oneCard.CardSuit();
+            // suitRank[1] = oneCard.CardRank();
             pack.RemoveFromPlayerHand(ans);
             return suitRank;
-
-            // public int[] MultipleReturns(int a, int b)
-            // {
-            //     int[] minMax = int[2];
-            //     if (a > b)
-            //     {
-            //         minMax[0] = a;
-            //         minMax[1] = b;
-            //     }
-            //     else
-            //     {
-            //         minMax[0] = b;
-            //         minMax[1] = a;
-            //     }
-            //     return minMax;
-            // }
+            // int[] suitRank = new int[2];
+            // Card oneCard = pack.playerHand[ans];
+            // Console.Write("The player chose ");
+            // oneCard.Print();
+            // string playedCard = oneCard.ReturnCard();
+            // suitRank[0] = oneCard.CardSuit();
+            // suitRank[1] = oneCard.CardRank();
+            // pack.RemoveFromPlayerHand(ans);
+            // return suitRank;
         }
         public int[] AI()
         {
             int[] suitRank = new int[2];
             Random random = new Random();
-            // int selection;
             int selection = random.Next(0, (pack.AIHandSize() - 1));
             Card aiCard = pack.AIHand[selection];
             Console.Write("The AI chose ");
@@ -146,16 +138,12 @@ namespace CardGame
                 {
                     if (playerRank < aiRank)
                     {
-                        Console.WriteLine("AI scored one point!\n");
-                        aiScore++;
-                        Scoreboard();
+                        AiWon();
                         return 1;
                     }
                     else
                     {
-                        Console.WriteLine("Player scored one point!\n");
-                        playerScore++;
-                        Scoreboard();
+                        PlayerWon();
                         return 0;
                     }
                 }
@@ -173,16 +161,12 @@ namespace CardGame
                 {
                     if (playerRank > aiRank)
                     {
-                        Console.WriteLine("Player scored one point!\n");
-                        playerScore++;
-                        Scoreboard();
+                        PlayerWon();
                         return 0;
                     }
                     else
                     {
-                        Console.WriteLine("AI scored one point!\n");
-                        aiScore++;
-                        Scoreboard();
+                        AiWon();
                         return 1;
                     }
                 }
@@ -194,8 +178,19 @@ namespace CardGame
                     return 0;
                 }
             }
+            void PlayerWon()
+            {
+                Console.WriteLine("Player scored one point!\n");
+                playerScore++;
+                Scoreboard();
+            }
+            void AiWon()
+            {
+                Console.WriteLine("AI scored one point!\n");
+                aiScore++;
+                Scoreboard();
+            }
         }
-
         public void Scoreboard()
         {
             Console.WriteLine("-SCOREBOARD-");
