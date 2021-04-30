@@ -53,19 +53,15 @@ namespace CardGame
         //////////////////   NEW GAME CODE BELOW THIS
         public void DealCards(int cardsToBeDrawn)
         {
-            if (cardsToBeDrawn <= cards.Count)
+            for (int i = 0; i < cardsToBeDrawn; i++)
             {
-                for (int i = 0; i < cardsToBeDrawn; i++)
-                {
-                    Card player_card = cards[0];
-                    Card AI_card = cards[1];
-                    playerHand.Add(player_card);
-                    AIHand.Add(AI_card);
-                    cards.RemoveAt(0);
-                    cards.RemoveAt(0);
-                }
+                Card player_card = cards[0];
+                Card AI_card = cards[1];
+                playerHand.Add(player_card);
+                AIHand.Add(AI_card);
+                cards.RemoveAt(0);
+                cards.RemoveAt(0);
             }
-            else { Console.WriteLine($"Can't take {cardsToBeDrawn} cards, only {cards.Count} cards left.."); }
         }
         public void PrintPlayerHandSize()
         {
