@@ -67,8 +67,6 @@ namespace CardGame
 
         public int[] PlayCard(int playingOrder)
         {
-            int[] continueGameAndRoundWinner = new int[2];
-
             if (playingOrder == 0)
             {
                 int[] output = PlayerFirst(playingOrder);
