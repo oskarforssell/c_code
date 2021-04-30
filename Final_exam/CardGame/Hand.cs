@@ -6,8 +6,8 @@ namespace CardGame
     public class Hand
     {
         Deck pack = new Deck();
-        List<Card> playerHand = new List<Card>();   // ADDED FOR CARD GAME
-        List<Card> AIHand = new List<Card>();   // ADDED FOR CARD GAME
+        List<Card> playerHand = new List<Card>();
+        List<Card> AIHand = new List<Card>();
 
         public int playerScore = 0;
         public int aiScore = 0;
@@ -35,10 +35,6 @@ namespace CardGame
         {
             return playerHand.Count;
         }
-        public int AIHandSize()
-        {
-            return AIHand.Count;
-        }
 
         public void PrintPlayerHand()
         {
@@ -50,17 +46,6 @@ namespace CardGame
                 one.Print();
             }
         }
-        public void RemoveFromPlayerHand(int index)
-        {
-            playerHand.RemoveAt(index);
-        }
-        public void RemoveFromAIHand(int index)
-        {
-            AIHand.RemoveAt(index);
-        }
-
-
-
 
         public int[] PlayCard(int playingOrder)
         {
@@ -149,18 +134,18 @@ namespace CardGame
             oneCard.Print();
             string playedCard = oneCard.ReturnCard();
             int[] suitRank = new int[2] { oneCard.CardSuit(), oneCard.CardRank() };
-            RemoveFromPlayerHand(ans);
+            playerHand.RemoveAt(ans);
             return suitRank;
         }
         public int[] AI()
         {
             Random random = new Random();
-            int selection = random.Next(0, (AIHandSize() - 1));
+            int selection = random.Next(0, (AIHand.Count - 1));
             Card aiCard = AIHand[selection];
             Console.Write("The AI chose ");
             aiCard.Print();
             int[] suitRank = new int[2] { aiCard.CardSuit(), aiCard.CardRank() };
-            RemoveFromAIHand(selection);
+            AIHand.RemoveAt(selection);
             return suitRank;
         }
 
