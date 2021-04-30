@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CardGame
 {
-    class Deck
+    public class Deck
     {
         public List<Card> cards = new List<Card>();
 
