@@ -6,8 +6,6 @@ namespace CardGame
     class Deck
     {
         public List<Card> cards = new List<Card>();
-        // public List<Card> playerHand = new List<Card>();   // ADDED FOR CARD GAME
-        // public List<Card> AIHand = new List<Card>();   // ADDED FOR CARD GAME
 
         public Deck()
         {
@@ -21,6 +19,7 @@ namespace CardGame
             }
             int deck_size = cards.Count;
         }
+
         public void PrintDeckSize()
         {
             int deck_size = cards.Count;
@@ -40,75 +39,5 @@ namespace CardGame
                 }
             }
         }
-
-
-        //////////////////   NEW GAME CODE BELOW THIS
-        // public void DealCards(int cardsToBeDrawn)
-        // {
-        //     for (int i = 0; i < cardsToBeDrawn; i++)
-        //     {
-        //         Card player_card = cards[0];
-        //         Card AI_card = cards[1];
-        //         playerHand.Add(player_card);
-        //         AIHand.Add(AI_card);
-        //         cards.RemoveAt(0);
-        //         cards.RemoveAt(0);
-        //     }
-        // }
-        // public void PrintPlayerHandSize()
-        // {
-        //     int deck_size = playerHand.Count;
-        //     Console.WriteLine($"The player has {deck_size} cards");
-        // }
-
-
-        // public int PlayerHandSize()
-        // {
-        //     return playerHand.Count;
-        // }
-        // public int AIHandSize()
-        // {
-        //     return AIHand.Count;
-        // }
-
-
-
-        // public void PrintAIHandSize()
-        // {
-        //     int deck_size = AIHand.Count;
-        //     Console.WriteLine($"The AI has {deck_size} cards");
-        // }
-
-        // public void PrintPlayerHand()
-        // {
-        //     Console.WriteLine("Your cards: ");
-        //     for (int i = 0; i < playerHand.Count; i++)
-        //     {
-        //         Card one = playerHand[i];
-        //         Console.Write($"{i.ToString()}: ");
-        //         one.Print();
-        //     }
-        // }
-
-        // public void PrintAIHand()                       /// FOR DEBUGGING!
-        // {
-        //     Console.WriteLine("AI cards: ");            //
-        //     for (int i = 0; i < AIHand.Count; i++)      //
-        //     {
-        //         Card one = AIHand[i];                   //
-        //         Console.Write($"{i.ToString()}: ");     //
-        //         one.Print();                            //
-        //     }
-
-        // }
-
-        // public void RemoveFromPlayerHand(int index)
-        // {
-        //     playerHand.RemoveAt(index);
-        // }
-        // public void RemoveFromAIHand(int index)
-        // {
-        //     AIHand.RemoveAt(index);
-        // }
     }
 }
