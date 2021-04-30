@@ -93,10 +93,10 @@ namespace CardGame
 
                     if (hand.PlayerHandSize() == 0)
                     {
-                        output[0] = 0;
+                        output[0] = 0;  // End game (no more cards)
                         return output;
                     }
-                    output[0] = 1;
+                    output[0] = 1;  // Continue game
                     return output;
                 }
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{(hand.PlayerHandSize() - 1).ToString()})"); }
@@ -229,6 +229,11 @@ namespace CardGame
             Console.WriteLine("-SCOREBOARD-");
             Console.WriteLine($" Player: {hand.playerScore.ToString()}\n AI:\t {hand.aiScore.ToString()}");
             Console.WriteLine("------------------------------------\n");
+        }
+
+        public AiIntelligence()
+        {
+            Console.WriteLine("Say what?")
         }
     }
 }
