@@ -13,8 +13,6 @@ namespace CardGame
             pack.ShuffleTheDeck();
             pack.DealCards(cardNum);
             pack.PrintDeckSize();
-            // pack.PrintPlayerHand();
-            // pack.PrintAIHand();
         }
 
         public int PlayCard()
@@ -30,16 +28,24 @@ namespace CardGame
                 pack.PrintPlayerHand();
                 Console.Write($"Last card to play! (0): ");
             }
-
+            int playingOrder = 0;   /////////////////   THIS NEEDS TO BE CHECKED TO SEE IF IT WORKS
             while (true)
             {
                 int ans = Int32.Parse(Console.ReadLine());
-
                 if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
                 {
-                    int[] playerCard = Player(ans); // Print & return players chosen card
-                    int[] aiCard = AI(ans); // AI selection below;
-                    Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1]); // Check who won
+                    if (playingOrder == 0)  // Player plays first
+                    {
+                        int[] playerCard = Player(ans);
+                        int[] aiCard = AI(ans);
+                        playingOrder = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1]);
+                    }
+                    else  // AI plays first
+                    {
+                        int[] aiCard = AI(ans);
+                        int[] playerCard = Player(ans);
+                        playingOrder = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1]);
+                    }
 
                     if (pack.PlayerHandSize() == 0)
                     {
@@ -50,9 +56,6 @@ namespace CardGame
                 else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{cardRange})"); }
             }
         }
-
-        ///// SOMETHING LIKE THIS TO SPLIT UP PLAYER AND AI GAMEPLAY.. THEN ADD IF STATEMENTS TO CHOOSE WHICH ONE PLAYES FIRST!
-
         public int[] Player(int ans)
         {
             int[] suitRank = new int[2];
@@ -85,8 +88,8 @@ namespace CardGame
         {
             int[] suitRank = new int[2];
             Random random = new Random();
-            int selection;
-            selection = random.Next(0, (pack.AIHandSize() - 1));
+            // int selection;
+            int selection = random.Next(0, (pack.AIHandSize() - 1));
             Card aiCard = pack.AIHand[selection];
             Console.Write("The AI chose ");
             aiCard.Print();
@@ -96,8 +99,7 @@ namespace CardGame
             return suitRank;
         }
 
-
-        public void Winner(int playerSuit, int aiSuit, int playerRank, int aiRank)
+        public int Winner(int playerSuit, int aiSuit, int playerRank, int aiRank)
         {
             if (playerSuit == aiSuit)
             {
@@ -105,11 +107,15 @@ namespace CardGame
                 {
                     Console.WriteLine("Player scored one point!\n");
                     playerScore++;
+                    Scoreboard();
+                    return 0;
                 }
                 else
                 {
                     Console.WriteLine("AI scored one point!\n");
                     aiScore++;
+                    Scoreboard();
+                    return 1;
                 }
             }
             else
@@ -117,6 +123,12 @@ namespace CardGame
                 Console.WriteLine("AI picked a card with a different suit! One point for the player!\n");
                 playerScore++;
             }
+            Scoreboard();
+            return 0;
+        }
+
+        public void Scoreboard()
+        {
             Console.WriteLine("-SCOREBOARD-");
             Console.WriteLine($" Player: {playerScore.ToString()}\n AI:\t {aiScore.ToString()}");
             Console.WriteLine("------------------------------------\n");
