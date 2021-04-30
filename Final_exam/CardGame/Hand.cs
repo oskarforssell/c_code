@@ -1,19 +1,66 @@
 using System;
-// using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace CardGame
 {
     public class Hand
     {
         Deck pack = new Deck();
+        List<Card> playerHand = new List<Card>();   // ADDED FOR CARD GAME
+        List<Card> AIHand = new List<Card>();   // ADDED FOR CARD GAME
+
         public int playerScore = 0;
         public int aiScore = 0;
         public void Deal(int cardNum)
         {
             pack.ShuffleTheDeck();
-            pack.DealCards(cardNum);
+            DealCards(cardNum);
             pack.PrintDeckSize();
         }
+
+        public void DealCards(int cardsToBeDrawn)
+        {
+            for (int i = 0; i < cardsToBeDrawn; i++)
+            {
+                Card player_card = pack.cards[0];
+                Card AI_card = pack.cards[1];
+                playerHand.Add(player_card);
+                AIHand.Add(AI_card);
+                pack.cards.RemoveAt(0);
+                pack.cards.RemoveAt(0);
+            }
+        }
+
+        public int PlayerHandSize()
+        {
+            return playerHand.Count;
+        }
+        public int AIHandSize()
+        {
+            return AIHand.Count;
+        }
+
+        public void PrintPlayerHand()
+        {
+            Console.WriteLine("Your cards: ");
+            for (int i = 0; i < playerHand.Count; i++)
+            {
+                Card one = playerHand[i];
+                Console.Write($"{i.ToString()}: ");
+                one.Print();
+            }
+        }
+        public void RemoveFromPlayerHand(int index)
+        {
+            playerHand.RemoveAt(index);
+        }
+        public void RemoveFromAIHand(int index)
+        {
+            AIHand.RemoveAt(index);
+        }
+
+
+
 
         public int[] PlayCard(int playingOrder)
         {
@@ -38,13 +85,13 @@ namespace CardGame
             while (true)
             {
                 int ans = Int32.Parse(Console.ReadLine());
-                if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
+                if (ans <= PlayerHandSize() - 1 && ans > -1)
                 {
                     int[] playerCard = Player(ans);
                     int[] aiCard = AI();
                     output[1] = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1], playingOrder);
 
-                    if (pack.PlayerHandSize() == 0)
+                    if (PlayerHandSize() == 0)
                     {
                         output[0] = 0;
                         return output;
@@ -52,7 +99,7 @@ namespace CardGame
                     output[0] = 1;
                     return output;
                 }
-                else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{(pack.PlayerHandSize() - 1).ToString()})"); }
+                else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{(PlayerHandSize() - 1).ToString()})"); }
             }
         }
         public int[] AiFirst(int playingOrder)
@@ -63,12 +110,12 @@ namespace CardGame
                 int[] aiCard = AI();
                 GamePlayQuestion();
                 int ans = Int32.Parse(Console.ReadLine());
-                if (ans <= pack.PlayerHandSize() - 1 && ans > -1)
+                if (ans <= PlayerHandSize() - 1 && ans > -1)
                 {
                     int[] playerCard = Player(ans);
                     output[1] = Winner(playerCard[0], aiCard[0], playerCard[1], aiCard[1], playingOrder);
 
-                    if (pack.PlayerHandSize() == 0)
+                    if (PlayerHandSize() == 0)
                     {
                         output[0] = 0;
                         return output;
@@ -76,44 +123,44 @@ namespace CardGame
                     output[0] = 1;
                     return output;
                 }
-                else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{(pack.PlayerHandSize() - 1).ToString()})"); }
+                else { Console.WriteLine($"Hey dumdum! You have to choose between (0-{(PlayerHandSize() - 1).ToString()})"); }
             }
         }
 
         public void GamePlayQuestion()
         {
-            string cardRange = (pack.PlayerHandSize() - 1).ToString();
-            if (pack.PlayerHandSize() > 1)
+            string cardRange = (PlayerHandSize() - 1).ToString();
+            if (PlayerHandSize() > 1)
             {
-                pack.PrintPlayerHand();
+                PrintPlayerHand();
                 Console.Write($"Which card do you want to play? (0-{cardRange}): ");
             }
-            else if (pack.PlayerHandSize() == 1)
+            else if (PlayerHandSize() == 1)
             {
-                pack.PrintPlayerHand();
+                PrintPlayerHand();
                 Console.Write($"Last card to play! (0): ");
             }
         }
 
         public int[] Player(int ans)
         {
-            Card oneCard = pack.playerHand[ans];
+            Card oneCard = playerHand[ans];
             Console.Write("The player chose ");
             oneCard.Print();
             string playedCard = oneCard.ReturnCard();
             int[] suitRank = new int[2] { oneCard.CardSuit(), oneCard.CardRank() };
-            pack.RemoveFromPlayerHand(ans);
+            RemoveFromPlayerHand(ans);
             return suitRank;
         }
         public int[] AI()
         {
             Random random = new Random();
-            int selection = random.Next(0, (pack.AIHandSize() - 1));
-            Card aiCard = pack.AIHand[selection];
+            int selection = random.Next(0, (AIHandSize() - 1));
+            Card aiCard = AIHand[selection];
             Console.Write("The AI chose ");
             aiCard.Print();
             int[] suitRank = new int[2] { aiCard.CardSuit(), aiCard.CardRank() };
-            pack.RemoveFromAIHand(selection);
+            RemoveFromAIHand(selection);
             return suitRank;
         }
 
