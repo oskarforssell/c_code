@@ -102,30 +102,17 @@ namespace CardGame
             oneCard.Print();
             string playedCard = oneCard.ReturnCard();
             int[] suitRank = new int[2] { oneCard.CardSuit(), oneCard.CardRank() };
-            // suitRank[0] = oneCard.CardSuit();
-            // suitRank[1] = oneCard.CardRank();
             pack.RemoveFromPlayerHand(ans);
             return suitRank;
-            // int[] suitRank = new int[2];
-            // Card oneCard = pack.playerHand[ans];
-            // Console.Write("The player chose ");
-            // oneCard.Print();
-            // string playedCard = oneCard.ReturnCard();
-            // suitRank[0] = oneCard.CardSuit();
-            // suitRank[1] = oneCard.CardRank();
-            // pack.RemoveFromPlayerHand(ans);
-            // return suitRank;
         }
         public int[] AI()
         {
-            int[] suitRank = new int[2];
             Random random = new Random();
             int selection = random.Next(0, (pack.AIHandSize() - 1));
             Card aiCard = pack.AIHand[selection];
             Console.Write("The AI chose ");
             aiCard.Print();
-            suitRank[0] = aiCard.CardSuit();
-            suitRank[1] = aiCard.CardRank();
+            int[] suitRank = new int[2] { aiCard.CardSuit(), aiCard.CardRank() };
             pack.RemoveFromAIHand(selection);
             return suitRank;
         }
