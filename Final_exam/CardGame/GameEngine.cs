@@ -27,7 +27,20 @@ namespace CardGame
                     {
                         playWin = PlayCard(playWin[1]);
                     }
+                    GameWinner();
                     break;
+                }
+            }
+            void GameWinner()
+            {
+                Console.WriteLine("GAME OVER");
+                if (hand.playerScore > hand.aiScore)
+                {
+                    Console.WriteLine("You are victorious! Human player wins!\n");
+                }
+                else
+                {
+                    Console.WriteLine("You loose! The AI has outsmarted you and will conquer the world!!\n");
                 }
             }
         }
