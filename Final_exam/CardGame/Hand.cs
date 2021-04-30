@@ -5,31 +5,32 @@ namespace CardGame
 {
     public class Hand
     {
-        Deck pack = new Deck();
-        List<Card> playerHand = new List<Card>();
-        List<Card> AIHand = new List<Card>();
+        public Deck pack = new Deck();
+        public List<Card> playerHand = new List<Card>();
+        public List<Card> AIHand = new List<Card>();
 
         public int playerScore = 0;
         public int aiScore = 0;
-        public void Deal(int cardNum)
-        {
-            pack.ShuffleTheDeck();
-            DealCards(cardNum);
-            pack.PrintDeckSize();
-        }
+        // public void Deal(int cardNum)
+        // {
+        //     pack.ShuffleTheDeck();
+        //     DealCards(cardNum);
+        //     pack.PrintDeckSize();
+        // }
 
-        public void DealCards(int cardsToBeDrawn)
-        {
-            for (int i = 0; i < cardsToBeDrawn; i++)
-            {
-                Card player_card = pack.cards[0];
-                Card AI_card = pack.cards[1];
-                playerHand.Add(player_card);
-                AIHand.Add(AI_card);
-                pack.cards.RemoveAt(0);
-                pack.cards.RemoveAt(0);
-            }
-        }
+        // public void DealCards(int cardsToBeDrawn)
+        // {
+        //     for (int i = 0; i < cardsToBeDrawn; i++)
+        //     {
+        //         Card player_card = pack.cards[0];
+        //         Card AI_card = pack.cards[1];
+        //         playerHand.Add(player_card);
+        //         AIHand.Add(AI_card);
+        //         pack.cards.RemoveAt(0);
+        //         pack.cards.RemoveAt(0);
+        //     }
+        //     pack.PrintDeckSize();
+        // }
 
         public int PlayerHandSize()
         {
@@ -47,6 +48,8 @@ namespace CardGame
             }
         }
 
+
+        /////// EVERYTHING BELOW SHOULD BE MOVED TO THE GAME ENGINE!!
         public int[] PlayCard(int playingOrder)
         {
             int[] continueGameAndRoundWinner = new int[2];
