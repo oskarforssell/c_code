@@ -233,7 +233,7 @@ namespace CardGame
 
         public AiIntelligence()
         {
-            Console.WriteLine("Say what?")
+            Console.WriteLine("Say what?");
         }
     }
 }
