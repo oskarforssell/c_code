@@ -5,6 +5,8 @@ namespace CardGame
 {
     public class GameEngine
     {
+        // Deck pack = new Deck();
+        Hand hand = new Hand();
         public void Start()
         {
             while (true)
@@ -16,9 +18,8 @@ namespace CardGame
                 else if (digit < 1) { Console.WriteLine("Insanity! You need cards to play!! 0__0"); }
                 else if (digit < 27)
                 {
-                    Hand hand = new Hand();
                     Console.WriteLine($"The size of the hands: {ans}");
-                    hand.Deal(digit);
+                    Deal(digit);
                     Console.WriteLine("");
 
                     int[] playWin = new int[2] { 1, 0 };
@@ -33,5 +34,24 @@ namespace CardGame
             }
         }
         public GameEngine() { }
+
+        public void Deal(int cardNum)
+        {
+            hand.pack.ShuffleTheDeck();
+            DealCards(cardNum);
+        }
+        public void DealCards(int cardsToBeDrawn)
+        {
+            for (int i = 0; i < cardsToBeDrawn; i++)
+            {
+                Card player_card = hand.pack.cards[0];
+                Card AI_card = hand.pack.cards[1];
+                hand.playerHand.Add(player_card);
+                hand.AIHand.Add(AI_card);
+                hand.pack.cards.RemoveAt(0);
+                hand.pack.cards.RemoveAt(0);
+            }
+            hand.pack.PrintDeckSize();
+        }
     }
 }
