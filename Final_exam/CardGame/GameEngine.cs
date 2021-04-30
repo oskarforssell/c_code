@@ -32,10 +32,12 @@ namespace CardGame
                     hand.Deal(digit);
                     Console.WriteLine("");
 
-                    int playOn = 1;
-                    while (playOn != 0)
+                    int[] playWin = new int[2] {1,0};
+                    // playWin[0] = 1 -> continue game / 0 -> end game
+                    // playWin[1] = 0 -> player plays first / 1 -> ai plays first
+                    while (playWin[0] != 0)
                     {
-                        playOn = hand.PlayCard();
+                        playWin = hand.PlayCard(playWin[1]);
                     }
                     break;
                 }
